@@ -2,24 +2,21 @@ import React from 'react'
 import styles from './TodoList.module.css';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/app/store';
+import ListItem from './list-item/ListItem';
 
 
 const TodoList = () => {
     const allTodos = useSelector((state: RootState) => state.todos);
 
-    console.log('allTodos', allTodos.todos);
-    
     return (
-        <div className={styles.list}>
-            {allTodos.todos.map(item => {
-                return (
-                    <li key={item.id}>
-                        <span className={styles.text}>{item.text}</span>
-                        <button>Delete</button>
-                    </li>
-                )
-            })}
-        </div>
+        <>
+            <div className={styles.list}>
+                {allTodos.todos.map(item =>
+                    <ListItem key={item.id} id={item.id} text={item.text} isDone={item.isDone} />
+                )}
+            </div>
+            {allTodos.todos.length === 0 && <h2>Nice! Nothing left todo :)</h2>}
+        </>
     )
 }
 

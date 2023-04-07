@@ -23,12 +23,18 @@ export const todosSlice = createSlice({
   initialState,
   reducers: {
     addTodo: (state, action) => {
+      if (!action.payload) return;
+      
       const newTodo = { id: Date.now(), text: action.payload, isDone: false };
       state.todos.push(newTodo);
+    },
+
+    clearAll: (state) => {
+      state.todos = [];
     },
   },
 });
 
-export const { addTodo } = todosSlice.actions;
+export const { addTodo, clearAll } = todosSlice.actions;
 
 export default todosSlice.reducer;

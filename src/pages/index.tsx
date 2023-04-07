@@ -2,20 +2,11 @@ import Head from 'next/head'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import TodoList from '@/components/TodoList'
-import Input from '@/components/input/Input'
-import { useState } from 'react'
 import Form from '@/components/form/Form'
 
 const inter = Inter({ subsets: ['latin'] })
 
-const mockData = [
-  { id: 1, text: 'Buy milk & cookies', isDone: false },
-  { id: 2, text: 'Drop off Tim at 15:00', isDone: false },
-]
-
 export default function Home() {
-
-
   return (
     <>
       <Head>
@@ -24,6 +15,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      
       <main className={styles.main}>
         <h2>React + Next.js + Redux Todos </h2>
         <Form />

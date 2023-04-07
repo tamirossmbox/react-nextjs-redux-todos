@@ -4,6 +4,8 @@ import styles from '@/styles/Home.module.css'
 import TodoList from '@/components/TodoList'
 import Input from '@/components/Input'
 import { useState } from 'react'
+import { store } from '../app/store'
+import { Provider } from 'react-redux'
 
 const inter = Inter({ subsets: ['latin'] })
 

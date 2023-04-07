@@ -33,7 +33,7 @@ export default function Home() {
         <h2>React + Next.js + Redux Todos </h2>
         <Input value={value} onChange={handleInputChange} />
         <hr />
-        <TodoList todos={mockData} />
+        <TodoList />
       </main>
     </>
   )

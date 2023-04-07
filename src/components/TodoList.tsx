@@ -1,12 +1,14 @@
 import React from 'react'
 import styles from './TodoList.module.css';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/app/store';
 
-interface TodosProps {
-    todos: any[]
-}
-const TodoList = ({ todos }: TodosProps) => {
+
+const TodoList = () => {
+    const allTodos = useSelector((state: RootState) => state.todos);
+
     return (
-        <div className={styles.list}>{todos.map(item => {
+        <div className={styles.list}>{allTodos.todos.map(item => {
             return <li key={item.id}>
                 <span className={styles.text}>{item.text}</span>
                 <button>Delete</button>

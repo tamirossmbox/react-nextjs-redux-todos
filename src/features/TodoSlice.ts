@@ -24,7 +24,7 @@ export const todosSlice = createSlice({
   reducers: {
     addTodo: (state, action) => {
       if (!action.payload) return;
-      
+
       const newTodo = { id: Date.now(), text: action.payload, isDone: false };
       state.todos.push(newTodo);
     },
@@ -32,9 +32,16 @@ export const todosSlice = createSlice({
     clearAll: (state) => {
       state.todos = [];
     },
+
+    deleteTodo: (state, action) => {
+      if (!action.payload) return;
+
+      const newTodos = state.todos.filter((item) => item.id !== action.payload);
+      state.todos = newTodos;
+    },
   },
 });
 
-export const { addTodo, clearAll } = todosSlice.actions;
+export const { addTodo, clearAll, deleteTodo } = todosSlice.actions;
 
 export default todosSlice.reducer;

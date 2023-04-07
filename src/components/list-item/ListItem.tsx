@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './ListItem.module.css';
+import { useDispatch } from 'react-redux';
+import { deleteTodo } from '@/features/TodoSlice';
 
 interface ListItemProps {
     id: number | string;
@@ -8,10 +10,15 @@ interface ListItemProps {
 }
 
 const ListItem = ({ id, text }: ListItemProps) => {
+    const dispatch = useDispatch();
+
+    const handleDeleteTodo = () => {
+        dispatch(deleteTodo(id))
+    }
     return (
         <li key={id} className={styles['list-item']}>
             <span className={styles.text}>{text}</span>
-            <button>Delete</button>
+            <button onClick={handleDeleteTodo}>Delete</button>
         </li>
     )
 }

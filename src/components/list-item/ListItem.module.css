@@ -1,6 +1,11 @@
 .list-item {
     display: flex;
     padding: 8px;
+    border-bottom: 1px solid #f1eeee;
+}
+
+.list-item:last-child {
+    border-bottom: none;
 }
 
 .text {

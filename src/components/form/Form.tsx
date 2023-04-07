@@ -1,14 +1,16 @@
 import React, { FormEvent, useState } from 'react'
 import Input from '../input/Input'
 import styles from './Form.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addTodo, clearAll } from '@/features/TodoSlice';
+import { RootState } from '@/app/store';
 
 
 const Form = () => {
-    const [value, setValue] = useState('')
-
+    const todos = useSelector((state: RootState) => state.todos);
     const dispatch = useDispatch();
+    const [value, setValue] = useState('');
+    const [isDisabled, setIsDisabled] = useState(false);
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         console.log('SUBMIT');
@@ -40,8 +42,8 @@ const Form = () => {
     return (
         <form className={styles['form-wrapper']} onSubmit={handleSubmit}>
             <Input value={value} onChange={handleInputChange} />
-            <button onClick={handleAddClick} className={`${styles.btn} ${styles['add-btn']}`}>Add</button>
-            <button onClick={handleClearClick} className={`${styles.btn} ${styles['clear-btn']}`}>Clear All</button>
+            <button onClick={handleAddClick} disabled={!value} className={`${styles.btn} ${styles['add-btn']}`}>Add</button>
+            <button onClick={handleClearClick} disabled={todos.todos.length === 0} className={`${styles.btn} ${styles['clear-btn']}`}>Clear All</button>
         </form>
     )
 }

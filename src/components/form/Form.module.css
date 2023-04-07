@@ -9,18 +9,18 @@
     border: 1px solid #dfdfdf;
 }
 
-.btn:hover {
+.btn:hover:enabled {
     cursor: pointer;
     transition: 0.2s;
 }
 
-.add-btn:hover {
+.add-btn:hover:enabled {
     background: #4285F4;
     border: 1px solid #4285F4;
     color: white;
 }
 
-.clear-btn:hover {
+.clear-btn:hover:enabled {
     background: #ff6060;
     border: 1px solid #ff6060;
 }

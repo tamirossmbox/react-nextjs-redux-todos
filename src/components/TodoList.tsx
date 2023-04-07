@@ -15,7 +15,7 @@ const TodoList = () => {
                     <ListItem key={item.id} id={item.id} text={item.text} isDone={item.isDone} />
                 )}
             </div>
-            {allTodos.todos.length === 0 && <h2>Nice! Nothing left todo :)</h2>}
+            {allTodos.todos.length === 0 && <h2 className={styles['no-todo-msg']}>Nice! Nothing left todo :)</h2>}
         </>
     )
 }

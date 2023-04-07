@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from './Input.module.css';
 
 interface InputProps {
     value: string;
@@ -7,7 +8,7 @@ interface InputProps {
 
 const Input = ({ value, onChange }: InputProps) => {
   return (
-    <input value={value} onChange={onChange} type="text" placeholder='What todo ?'/>
+    <input value={value} onChange={onChange} type="text" placeholder='What todo ?' className={styles.input}/>
   )
 }
 

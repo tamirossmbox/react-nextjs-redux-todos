@@ -1,6 +1,6 @@
 
 .list {
-    border: 2px solid #dedede;
+    border: 1px solid #dfdfdf;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -11,6 +11,16 @@
     display: flex;
     padding: 8px;
 }
+
+.list li:first-child {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+.list li:last-child {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
 
 .list li:hover {
     cursor: pointer;

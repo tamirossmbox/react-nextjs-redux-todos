@@ -2,10 +2,9 @@ import Head from 'next/head'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import TodoList from '@/components/TodoList'
-import Input from '@/components/Input'
+import Input from '@/components/input/Input'
 import { useState } from 'react'
-import { store } from '../app/store'
-import { Provider } from 'react-redux'
+import Form from '@/components/form/Form'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,12 +14,8 @@ const mockData = [
 ]
 
 export default function Home() {
-  const [value, setValue] = useState('')
 
-  const handleInputChange = (e: any) => {
-    setValue(e.target.value)
-  }
-  
+
   return (
     <>
       <Head>
@@ -31,8 +26,7 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <h2>React + Next.js + Redux Todos </h2>
-        <Input value={value} onChange={handleInputChange} />
-        <hr />
+        <Form />
         <TodoList />
       </main>
     </>

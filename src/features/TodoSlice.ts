@@ -1,9 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { log } from "console";
 
 export interface Todo {
-  id: number;
+  id: number | string;
   text: string;
   isDone?: boolean;
 }
@@ -24,14 +22,13 @@ export const todosSlice = createSlice({
   name: "todos",
   initialState,
   reducers: {
-    addTodo: (state) => {
-      console.log("state", state);
-
-      state.todos = [...state.todos];
+    addTodo: (state, action) => {
+      const newTodo = { id: Date.now(), text: action.payload, isDone: false };
+      state.todos.push(newTodo);
     },
   },
 });
 
 export const { addTodo } = todosSlice.actions;
 
-export default todosSlice.reducer
+export default todosSlice.reducer;

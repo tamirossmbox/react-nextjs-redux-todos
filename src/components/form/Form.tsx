@@ -1,22 +1,23 @@
 import React, { useState } from 'react'
 import Input from '../input/Input'
 import styles from './Form.module.css';
+import { useDispatch } from 'react-redux';
+import { addTodo } from '@/features/TodoSlice';
 
-interface FormProps {
-    //
-}
 
 const Form = () => {
     const [value, setValue] = useState('')
 
+    const dispatch = useDispatch();
+
     const handleInputChange = (e: any) => {
-      setValue(e.target.value)
+        setValue(e.target.value)
     }
 
     return (
         <div className={styles['form-wrapper']}>
             <Input value={value} onChange={handleInputChange} />
-            <button className={styles['add-btn']}>Add</button>
+            <button onClick={() => dispatch(addTodo(value))} className={styles['add-btn']}>Add</button>
         </div>
     )
 }

@@ -7,13 +7,19 @@ import { RootState } from '@/app/store';
 const TodoList = () => {
     const allTodos = useSelector((state: RootState) => state.todos);
 
+    console.log('allTodos', allTodos.todos);
+    
     return (
-        <div className={styles.list}>{allTodos.todos.map(item => {
-            return <li key={item.id}>
-                <span className={styles.text}>{item.text}</span>
-                <button>Delete</button>
-                </li>
-        })}</div>
+        <div className={styles.list}>
+            {allTodos.todos.map(item => {
+                return (
+                    <li key={item.id}>
+                        <span className={styles.text}>{item.text}</span>
+                        <button>Delete</button>
+                    </li>
+                )
+            })}
+        </div>
     )
 }
 

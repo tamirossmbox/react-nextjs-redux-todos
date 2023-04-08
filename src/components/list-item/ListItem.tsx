@@ -1,7 +1,9 @@
 import React from 'react';
 import styles from './ListItem.module.css';
 import { useDispatch } from 'react-redux';
-import { deleteTodo } from '@/features/TodoSlice';
+import { changeIsDone, deleteTodo } from '@/features/TodoSlice';
+import { BsTrash } from 'react-icons/bs';
+import { RiCheckboxBlankCircleLine, RiCheckboxCircleFill } from 'react-icons/ri'
 
 interface ListItemProps {
     id: number | string;
@@ -9,16 +11,28 @@ interface ListItemProps {
     isDone?: boolean;
 }
 
-const ListItem = ({ id, text }: ListItemProps) => {
+const ListItem = ({ id, text, isDone }: ListItemProps) => {
     const dispatch = useDispatch();
 
     const handleDeleteTodo = () => {
         dispatch(deleteTodo(id))
     }
+
+    const handleClick = () => {
+        dispatch(changeIsDone({id, isDone}))
+    }
+
     return (
         <li key={id} className={styles['list-item']}>
-            <span className={styles.text}>{text}</span>
-            <button onClick={handleDeleteTodo}>Delete</button>
+
+            <span className={styles.text} onClick={handleClick}>
+                {isDone ? <RiCheckboxCircleFill /> : <RiCheckboxBlankCircleLine />}
+                {text}
+            </span>
+
+            <div className={styles['action-box']}>
+                <BsTrash onClick={handleDeleteTodo} className={`${styles.icon} ${styles['delete-icon']}`} />
+            </div>
         </li>
     )
 }

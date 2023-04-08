@@ -1,13 +1,32 @@
 .list-item {
     display: flex;
+    align-items: center;
     padding: 8px;
     border-bottom: 1px solid #f1eeee;
 }
+
 
 .list-item:last-child {
     border-bottom: none;
 }
 
 .text {
+    display: flex;
+    align-items:center;
     flex: 1;
+    gap: 8px;
+}
+
+.icon:hover {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.delete-icon:hover {
+    color: red;
+}
+
+.action-box {
+    display: flex;
+    gap: 8px;
 }

@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { changeIsDone, deleteTodo } from '@/features/TodoSlice';
 import { BsTrash } from 'react-icons/bs';
 import { RiCheckboxBlankCircleLine, RiCheckboxCircleFill } from 'react-icons/ri'
+import { AiOutlineCopy } from 'react-icons/ai';
+import { copyToClipboard } from '@/app/utils';
 
 interface ListItemProps {
     id: number | string;
@@ -19,7 +21,11 @@ const ListItem = ({ id, text, isDone }: ListItemProps) => {
     }
 
     const handleClick = () => {
-        dispatch(changeIsDone({id, isDone}))
+        dispatch(changeIsDone({ id, isDone }))
+    }
+
+    const handleCopyClick = () => {
+        copyToClipboard(text)
     }
 
     return (
@@ -31,6 +37,7 @@ const ListItem = ({ id, text, isDone }: ListItemProps) => {
             </span>
 
             <div className={styles['action-box']}>
+                <AiOutlineCopy onClick={handleCopyClick}/>
                 <BsTrash onClick={handleDeleteTodo} className={`${styles.icon} ${styles['delete-icon']}`} />
             </div>
         </li>

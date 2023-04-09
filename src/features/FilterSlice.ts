@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { TodosState } from "./TodoSlice";
 
 const initialState = {
-  isCheckAll: false,
+  isMarkAllAsDone: false,
 };
 
 export const filterSlice = createSlice({
@@ -12,9 +12,13 @@ export const filterSlice = createSlice({
     saveToLocalStorage: (state, action: PayloadAction<TodosState>) => {
       localStorage.setItem("todos", JSON.stringify(action.payload));
     },
+    
+    changeIsMarkAll: (state, action) => {
+        state.isMarkAllAsDone = action.payload
+    }
   },
 });
 
-export const { saveToLocalStorage } = filterSlice.actions;
+export const { saveToLocalStorage, changeIsMarkAll } = filterSlice.actions;
 
 export default filterSlice.reducer;

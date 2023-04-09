@@ -3,13 +3,15 @@ import { BsSortUp, BsSortDown, BsCheck2Square } from 'react-icons/bs';
 import { TfiSave as SaveIcon } from 'react-icons/tfi';
 import { BiSelectMultiple } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
-import { checkAll } from '@/features/TodoSlice';
 import { RootState } from '@/app/store';
-import { saveToLocalStorage } from '@/features/FilterSlice';
+import { changeIsMarkAll, saveToLocalStorage } from '@/features/FilterSlice';
 import styles from '../../styles/Filter.module.scss';
+import { markAllAsDone } from '@/features/TodoSlice';
 
 const Filter = () => {
     const [isDisabled, setIsDisabled] = useState(false);
+    const [isAllMArked, setIsAllMarked] = useState(false);
+
     const dispatch = useDispatch();
 
     const state = useSelector((state: RootState) => state.todos);
@@ -26,16 +28,19 @@ const Filter = () => {
     const handleCheckAll = () => {
         if (isDisabled) return;
 
-        dispatch(checkAll())
+        setIsAllMarked(!isAllMArked)
+
+        dispatch(markAllAsDone(isAllMArked))
+        dispatch(changeIsMarkAll(isAllMArked))
     }
 
     return (
         <div className={styles.filter}>
             <BiSelectMultiple onClick={handleCheckAll} color={iconColor} />
             <BsSortUp color={iconColor} />
-            <BsSortDown color={iconColor}/>
-            <BsCheck2Square color={iconColor}/>
-            <SaveIcon color={iconColor} onClick={() => dispatch(saveToLocalStorage(state))}/>
+            <BsSortDown color={iconColor} />
+            <BsCheck2Square color={iconColor} />
+            <SaveIcon color={iconColor} onClick={() => dispatch(saveToLocalStorage(state))} />
         </div>
     )
 }

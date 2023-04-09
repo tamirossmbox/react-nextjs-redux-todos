@@ -48,13 +48,15 @@ export const todosSlice = createSlice({
       if (todo) todo.isDone = !isDone;
     },
 
-    checkAll: (state) => {
-      state.todos.forEach((todo) => (todo.isDone = true));
+    markAllAsDone: (state, action) => {
+      state.todos.forEach((todo) => {
+        todo.isDone = action.payload;
+      });
     },
   },
 });
 
-export const { addTodo, clearAll, deleteTodo, changeIsDone, checkAll } =
+export const { addTodo, clearAll, deleteTodo, changeIsDone, markAllAsDone } =
   todosSlice.actions;
 
 export default todosSlice.reducer;

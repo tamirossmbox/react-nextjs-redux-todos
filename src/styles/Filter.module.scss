@@ -1,0 +1,16 @@
+.filter {
+  display: flex;
+  gap: 18px;
+
+  & button {
+    padding: 4px;
+    border-radius: 4px;
+    border: 1px solid #dfdfdf;
+    cursor: pointer;
+  }
+
+  & svg {
+    font-size: 22px;
+    width: 22px;
+  }
+}

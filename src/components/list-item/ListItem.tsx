@@ -29,7 +29,7 @@ const ListItem = ({ id, text, isDone }: ListItemProps) => {
     }
 
     return (
-        <li key={id} className={styles['list-item']}>
+        <li key={id} className={`${styles['list-item']} ${isDone && styles['is-done']}`}>
 
             <span className={styles.text} onClick={handleClick}>
                 {isDone ? <RiCheckboxCircleFill color='green'/> : <RiCheckboxBlankCircleLine />}

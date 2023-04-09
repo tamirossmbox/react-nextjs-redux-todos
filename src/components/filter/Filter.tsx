@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BsSortUp, BsSortDown, BsCheck2Square } from 'react-icons/bs';
+import { BsSortUp, BsSortDown } from 'react-icons/bs';
 import { TfiSave as SaveIcon } from 'react-icons/tfi';
 import { BiSelectMultiple } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
@@ -39,7 +39,6 @@ const Filter = () => {
             <BiSelectMultiple onClick={handleCheckAll} color={iconColor} />
             <BsSortUp color={iconColor} />
             <BsSortDown color={iconColor} />
-            <BsCheck2Square color={iconColor} />
             <SaveIcon color={iconColor} onClick={() => dispatch(saveToLocalStorage(state))} />
         </div>
     )

@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './TodoList.module.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/app/store';
 import ListItem from './list-item/ListItem';
+import { updateTodos } from '@/features/TodoSlice';
 
 
 const TodoList = () => {
     const allTodos = useSelector((state: RootState) => state.todos);
+
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const savedItems = localStorage.getItem('todos');
+        if (savedItems) {
+            dispatch(updateTodos(JSON.parse(savedItems)))
+        }
+    }, [dispatch])
 
     return (
         <>

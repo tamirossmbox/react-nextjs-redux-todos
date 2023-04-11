@@ -29,6 +29,10 @@ export const todosSlice = createSlice({
       state.todos.push(newTodo);
     },
 
+    updateTodos: (state, action) => {
+      state.todos = action.payload.todos
+    },
+
     clearAll: (state) => {
       state.todos = [];
     },
@@ -62,11 +66,11 @@ export const todosSlice = createSlice({
           });
           break;
 
-          case "dsc":
-            state.todos = state.todos.sort((a,b) => {
-                return a.text < b.text ? 1 : -1;
-            })
-            break;
+        case "dsc":
+          state.todos = state.todos.sort((a, b) => {
+            return a.text < b.text ? 1 : -1;
+          });
+          break;
       }
     },
   },
@@ -79,6 +83,7 @@ export const {
   changeIsDone,
   markAllAsDone,
   sortTodos,
+  updateTodos,
 } = todosSlice.actions;
 
 export default todosSlice.reducer;

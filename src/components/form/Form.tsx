@@ -27,14 +27,12 @@ const Form = () => {
 
     const handleAddClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        e.stopPropagation()
         dispatch(addTodo(value));
         setValue('')
     }
 
-    const handleClearClick = (e:any) => {
+    const handleClearClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        e.stopPropagation()
         dispatch(clearAll());
         setValue('')
     }

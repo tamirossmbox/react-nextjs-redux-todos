@@ -53,11 +53,33 @@ export const todosSlice = createSlice({
         todo.isDone = action.payload;
       });
     },
+
+    sortTodos: (state, action) => {
+      switch (action.payload) {
+        case "asc":
+          state.todos = state.todos.sort((a, b) => {
+            return a.text > b.text ? 1 : -1;
+          });
+          break;
+
+          case "dsc":
+            state.todos = state.todos.sort((a,b) => {
+                return a.text < b.text ? 1 : -1;
+            })
+            break;
+      }
+    },
   },
 });
 
-export const { addTodo, clearAll, deleteTodo, changeIsDone, markAllAsDone } =
-  todosSlice.actions;
+export const {
+  addTodo,
+  clearAll,
+  deleteTodo,
+  changeIsDone,
+  markAllAsDone,
+  sortTodos,
+} = todosSlice.actions;
 
 export default todosSlice.reducer;
 //  markAsDone

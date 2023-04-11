@@ -12,5 +12,10 @@
   & svg {
     font-size: 22px;
     width: 22px;
+    cursor: pointer;
+
+    &:hover {
+      filter: 0px 0px 11px;
+    }
   }
 }

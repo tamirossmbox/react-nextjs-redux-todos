@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { BsSortUp, BsSortDown } from 'react-icons/bs';
+import { BsSortAlphaUpAlt, BsSortAlphaDown } from 'react-icons/bs';
 import { TfiSave as SaveIcon } from 'react-icons/tfi';
 import { BiSelectMultiple } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/app/store';
 import { changeIsMarkAll, saveToLocalStorage } from '@/features/FilterSlice';
-import styles from '../../styles/Filter.module.scss';
-import { markAllAsDone } from '@/features/TodoSlice';
+import { markAllAsDone, sortTodos } from '@/features/TodoSlice';
+import styles from './Filter.module.scss';
+
+enum SortDirection {
+    Asc = 'asc',
+    Dsc = 'dsc'
+}
 
 const Filter = () => {
     const [isDisabled, setIsDisabled] = useState(false);
@@ -34,11 +39,15 @@ const Filter = () => {
         dispatch(changeIsMarkAll(isAllMArked))
     }
 
+    const handleSortClick = (dir: SortDirection = SortDirection.Asc) => {
+        dispatch(sortTodos(dir))
+    }
+
     return (
         <div className={styles.filter}>
             <BiSelectMultiple onClick={handleCheckAll} color={iconColor} />
-            <BsSortUp color={iconColor} />
-            <BsSortDown color={iconColor} />
+            <BsSortAlphaUpAlt color={iconColor} onClick={() => handleSortClick()}/>
+            <BsSortAlphaDown color={iconColor} onClick={() => handleSortClick(SortDirection.Dsc)}/>
             <SaveIcon color={iconColor} onClick={() => dispatch(saveToLocalStorage(state))} />
         </div>
     )

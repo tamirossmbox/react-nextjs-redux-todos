@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { BsSortAlphaUpAlt, BsSortAlphaDown } from 'react-icons/bs';
 import { TfiSave as SaveIcon } from 'react-icons/tfi';
-import { BiSelectMultiple } from 'react-icons/bi';
+import { GrTask} from 'react-icons/gr';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/app/store';
 import { changeIsMarkAll, saveToLocalStorage } from '@/features/FilterSlice';
@@ -45,7 +45,7 @@ const Filter = () => {
 
     return (
         <div className={styles.filter}>
-            <BiSelectMultiple onClick={handleCheckAll} color={iconColor} />
+            <GrTask onClick={handleCheckAll} color={iconColor} />
             <BsSortAlphaUpAlt color={iconColor} onClick={() => handleSortClick()}/>
             <BsSortAlphaDown color={iconColor} onClick={() => handleSortClick(SortDirection.Dsc)}/>
             <SaveIcon color={iconColor} onClick={() => dispatch(saveToLocalStorage(state))} />

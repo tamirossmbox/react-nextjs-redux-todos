@@ -1,0 +1,22 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    color: #999;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    user-select: none;
+}
+
+.nav-items {
+    display: flex;
+    align-self: center;
+    gap: 8px;
+    user-select: none;
+}

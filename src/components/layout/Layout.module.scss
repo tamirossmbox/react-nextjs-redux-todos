@@ -3,7 +3,14 @@
   flex-direction: column;
   align-items: stretch;
   justify-content: space-between;
-  gap: 24px;
   text-align:center;
   height: 100vh;
+
+  & main {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    height: 100%;
+    background: rgb(245, 245, 245);
+  }
 }

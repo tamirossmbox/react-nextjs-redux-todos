@@ -3,6 +3,7 @@
   font-family: "Poppins", sans-serif;
   border: 1px solid #dfdfdf;
   display: flex;
+  background: white;
   flex-direction: column;
   width: 100%;
   border-radius: 8px;

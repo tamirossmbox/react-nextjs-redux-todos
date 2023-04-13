@@ -4,7 +4,7 @@ import styles from './Footer.module.scss';
 const Footer = () => {
   return (
     <div className={styles.footer}>
-        <h3>Footer</h3>
+        <h6>Demo made by <a href={'https://github.com/tamirossmbox'} target='_blank'>@Tamiross</a></h6>
     </div>
   )
 }

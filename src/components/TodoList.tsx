@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import styles from './TodoList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/app/store';
-import ListItem from './list-item/ListItem';
 import { updateTodos } from '@/features/TodoSlice';
+import ListItem from './list-item/ListItem';
+import styles from './TodoList.module.scss';
 
 
 const TodoList = () => {

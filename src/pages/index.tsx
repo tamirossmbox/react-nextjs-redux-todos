@@ -1,11 +1,8 @@
 import Head from 'next/head'
-import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import TodoList from '@/components/TodoList'
 import Form from '@/components/form/Form'
 import Filter from '@/components/filter/Filter'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
